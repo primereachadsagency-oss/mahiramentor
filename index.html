@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Free Forex Education — Your FX Channel</title>
+  <meta name="description" content="Learn Forex basics: currency pairs, risk management, and trading psychology. 100% educational. No signals.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#06111f; --bg2:#0b1b33; --glass:#0d1a30dd; --border:#2a3a66; --brand:#00ff99; --brand2:#00d1ff;
+      --text:#eef2ff; --muted:#a6b0c7; --warn:#ffdd57;
+    }
+    *{box-sizing:border-box} html,body{margin:0}
+    body{
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif;
+      color:var(--text); min-height:100vh; display:grid; place-items:center; padding:18px;
+      background:
+        radial-gradient(1200px 600px at 20% -10%, #123a6a 0%, #06111f 45%, #040a15 100%),
+        linear-gradient(135deg, #06111f 0%, #0b1b33 100%);
+      overflow-x:hidden;
+    }
+    .wrap{width:100%; max-width:560px; position:relative}
+    .orb{
+      position:absolute; inset:auto -120px -120px auto; width:260px; height:260px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #00d1ff55, transparent 60%);
+      filter: blur(40px); pointer-events:none; animation:float 6s ease-in-out infinite;
+    }
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .card{
+      background:linear-gradient(180deg, #0f203fee, #0b1833ee);
+      border:1px solid var(--border);
+      border-radius:18px; padding:22px; text-align:center;
+      box-shadow:0 20px 80px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+      backdrop-filter: blur(10px) saturate(120%);
+    }
+    .logo{
+      width:96px; height:96px; border-radius:20px; object-fit:cover;
+      border:3px solid var(--brand2); box-shadow:0 0 18px rgba(0,224,255,.35);
+    }
+    .name{font-size:1.1rem; color:#c8e9ff; margin:10px 0 8px}
+    h1{
+      font-size:1.8rem; line-height:1.2; margin:8px 0 6px;
+      background:linear-gradient(90deg,var(--brand2),var(--brand));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .sub{color:var(--muted); font-size:1rem; margin:0 auto 12px; max-width:42ch}
+    .pill{display:inline-block; padding:6px 12px; border-radius:999px; font-size:.85rem;
+      color:#d8ffe9; border:1px dashed rgba(0,255,153,.35); background:rgba(0,255,153,.08); margin:6px 0 14px}
+    ul{list-style:none; padding:0; margin:0 0 12px} li{margin:.45rem 0}
+    .cta{
+      display:inline-block; margin-top:8px; padding:14px 18px; border-radius:14px;
+      background:conic-gradient(from 180deg, var(--brand) 0 40%, var(--brand2) 40% 80%, var(--brand) 80% 100%);
+      color:#051b14; font-weight:700; text-decoration:none; position:relative;
+      box-shadow:0 0 0 0 rgba(0,255,153,.5); animation:pulse 1.6s infinite;
+    }
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,255,153,.45)}70%{box-shadow:0 0 0 20px rgba(0,255,153,0)}100%{box-shadow:0 0 0 0 rgba(0,255,153,0)}}
+    .warn{margin-top:10px; padding:8px 10px; border-radius:10px; background:rgba(255,221,87,.1); border:1px solid rgba(255,221,87,.35); color:#fffad1; font-size:.85rem}
+    .disc{font-size:.78rem; color:#9aa6c2; margin-top:8px}
+    footer{margin-top:10px; font-size:.76rem; opacity:.8}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="orb" aria-hidden="true"></div>
+    <main class="card">
+      <img class="logo" src="https://dummyimage.com/200x200/1e88e5/ffffff.png&text=FX+Logo" alt="Logo of Your FX Channel"/>
+      <div class="name">Official FX Channel: <strong>Your FX Channel</strong></div>
+
+      <div class="pill">100% Educational • Policy Safe</div>
+      <h1>Learn Forex the Right Way</h1>
+      <p class="sub">Forex basics for beginners: currency pairs, risk management & trading psychology. No signals, no ROI claims.</p>
+
+      <ul aria-label="You will learn">
+        <li>• What are currency pairs & pips (basics only)</li>
+        <li>• Position sizing & risk rules (no return promises)</li>
+        <li>• Common mistakes & discipline</li>
+      </ul>
+
+      <a class="cta" href="bridge.html" rel="nofollow noopener">Start Learning</a>
+
+      <div class="warn">⚠️ Risk Warning: Forex involves significant risk and may result in loss of capital. Learn responsibly.</div>
+      <p class="disc"><em>For educational purposes only. We do not provide investment advice or trading signals.</em></p>
+      <footer>© <span id="y"></span> Your FX Channel</footer>
+    </main>
+  </div>
+  <script>
+    document.getElementById('y').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
