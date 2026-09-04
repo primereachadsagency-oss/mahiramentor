@@ -1,93 +1,491 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Free Forex Education — Your FX Channel</title>
-  <meta name="description" content="Learn Forex basics: currency pairs, risk management, and trading psychology. 100% educational. No signals.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Trading Mentor ™️</title>
   <style>
-    :root{
-      --bg1:#06111f; --bg2:#0b1b33; --glass:#0d1a30dd; --border:#2a3a66; --brand:#00ff99; --brand2:#00d1ff;
-      --text:#eef2ff; --muted:#a6b0c7; --warn:#ffdd57;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
-    *{box-sizing:border-box} html,body{margin:0}
-    body{
-      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif;
-      color:var(--text); min-height:100vh; display:grid; place-items:center; padding:18px;
-      background:
-        radial-gradient(1200px 600px at 20% -10%, #123a6a 0%, #06111f 45%, #040a15 100%),
-        linear-gradient(135deg, #06111f 0%, #0b1b33 100%);
-      overflow-x:hidden;
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      background-color: #03080c;
+      position: relative;
+      overflow-x: hidden;
+      padding: 20px 0;
     }
-    .wrap{width:100%; max-width:560px; position:relative}
-    .orb{
-      position:absolute; inset:auto -120px -120px auto; width:260px; height:260px; border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, #00d1ff55, transparent 60%);
-      filter: blur(40px); pointer-events:none; animation:float 6s ease-in-out infinite;
+
+    /* Animated Background Container */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
     }
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-    .card{
-      background:linear-gradient(180deg, #0f203fee, #0b1833ee);
-      border:1px solid var(--border);
-      border-radius:18px; padding:22px; text-align:center;
-      box-shadow:0 20px 80px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
-      backdrop-filter: blur(10px) saturate(120%);
+
+    /* Grid Line Movement */
+    .grid-overlay {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background-image: 
+        linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: gridMove 20s linear infinite;
     }
-    .logo{
-      width:96px; height:96px; border-radius:20px; object-fit:cover;
-      border:3px solid var(--brand2); box-shadow:0 0 18px rgba(0,224,255,.35);
+
+    @keyframes gridMove {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(40px); }
     }
-    .name{font-size:1.1rem; color:#c8e9ff; margin:10px 0 8px}
-    h1{
-      font-size:1.8rem; line-height:1.2; margin:8px 0 6px;
-      background:linear-gradient(90deg,var(--brand2),var(--brand));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
+
+    /* Wave Line Animation */
+    .chart-wave {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0.4;
     }
-    .sub{color:var(--muted); font-size:1rem; margin:0 auto 12px; max-width:42ch}
-    .pill{display:inline-block; padding:6px 12px; border-radius:999px; font-size:.85rem;
-      color:#d8ffe9; border:1px dashed rgba(0,255,153,.35); background:rgba(0,255,153,.08); margin:6px 0 14px}
-    ul{list-style:none; padding:0; margin:0 0 12px} li{margin:.45rem 0}
-    .cta{
-      display:inline-block; margin-top:8px; padding:14px 18px; border-radius:14px;
-      background:conic-gradient(from 180deg, var(--brand) 0 40%, var(--brand2) 40% 80%, var(--brand) 80% 100%);
-      color:#051b14; font-weight:700; text-decoration:none; position:relative;
-      box-shadow:0 0 0 0 rgba(0,255,153,.5); animation:pulse 1.6s infinite;
+
+    .wave-path {
+      fill: none;
+      stroke: #ff0055;
+      stroke-width: 3;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: dash 4s ease-in-out infinite alternate, glow 2s ease-in-out infinite alternate;
     }
-    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,255,153,.45)}70%{box-shadow:0 0 0 20px rgba(0,255,153,0)}100%{box-shadow:0 0 0 0 rgba(0,255,153,0)}}
-    .warn{margin-top:10px; padding:8px 10px; border-radius:10px; background:rgba(255,221,87,.1); border:1px solid rgba(255,221,87,.35); color:#fffad1; font-size:.85rem}
-    .disc{font-size:.78rem; color:#9aa6c2; margin-top:8px}
-    footer{margin-top:10px; font-size:.76rem; opacity:.8}
+
+    @keyframes dash {
+      from { stroke-dashoffset: 1000; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 2px #ff0055); }
+      to { filter: drop-shadow(0 0 8px #ff0055); }
+    }
+
+    /* Pulsing Green Candlesticks */
+    .candlestick {
+      animation: pulseBar 1.5s infinite alternate ease-in-out;
+    }
+
+    @keyframes pulseBar {
+      0% { opacity: 0.3; transform: scaleY(0.95); }
+      100% { opacity: 0.7; transform: scaleY(1.05); }
+    }
+
+    /* Layer Containers Styling */
+    .container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 410px;
+      padding: 24px 18px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(3, 8, 12, 0.85);
+      backdrop-filter: blur(8px);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      margin-bottom: 15px;
+    }
+
+    /* Layer 1 - Q/A Styling */
+    #layer1 {
+      display: flex;
+    }
+
+    #layer2 {
+      display: none; /* Initially Hidden */
+    }
+
+    .qa-box {
+      width: 100%;
+      text-align: left;
+      margin: 20px 0;
+    }
+
+    .qa-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #00ff1a;
+      text-align: center;
+    }
+
+    .qa-option {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .qa-option:hover {
+      background: rgba(0, 255, 26, 0.15);
+      border-color: #00ff1a;
+    }
+
+    .qa-option input {
+      margin-right: 12px;
+      accent-color: #00ff1a;
+    }
+
+    .main-title {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .logo-container {
+      margin-bottom: 12px;
+    }
+
+    .logo-circle {
+      width: 145px;
+      height: 145px;
+      border-radius: 50%;
+      border: 3.5px solid #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #000000;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
+      overflow: hidden;
+    }
+
+    /* Logo Image Styling */
+    .logo-img {
+      width: 85%;
+      height: 85%;
+      object-fit: contain;
+    }
+
+    .timer {
+      font-size: 90px;
+      font-weight: 900;
+      color: #00e611;
+      line-height: 1;
+      margin: 8px 0 22px 0;
+      text-shadow: 0 0 20px rgba(0, 230, 17, 0.6);
+    }
+
+    .features-list {
+      list-style: none;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .features-list li {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .features-list .sub-heading {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      color: #d1d5db;
+      margin-top: -4px;
+      margin-bottom: 12px;
+    }
+
+    .features-list .highlight-text {
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .promo-banner {
+      border: 1.5px solid #ff0000;
+      color: #ffffff;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 9px 12px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 6px;
+      margin-bottom: 24px;
+      width: 100%;
+    }
+
+    .promo-banner a {
+      color: #ff4d4d;
+      text-decoration: underline;
+    }
+
+    .cta-button {
+      display: block;
+      width: 100%;
+      background-color: #00ff1a;
+      color: #000000;
+      font-size: 22px;
+      font-weight: 900;
+      text-decoration: none;
+      padding: 16px 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 25px rgba(0, 255, 26, 0.6);
+      cursor: pointer;
+      border: none;
+      transition: transform 0.1s ease;
+    }
+
+    .cta-button:active {
+      transform: scale(0.98);
+    }
+
+    /* Footer Links */
+    .footer-links {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    .footer-links a {
+      color: #888;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #00ff1a;
+    }
+
+    /* Modals / Popups */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 10;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: #0b141a;
+      border: 1px solid #00ff1a;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 400px;
+      width: 100%;
+      color: #ddd;
+      position: relative;
+      text-align: left;
+    }
+
+    .modal-content h3 {
+      color: #00ff1a;
+      margin-bottom: 10px;
+    }
+
+    .modal-content p {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      color: #fff;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="orb" aria-hidden="true"></div>
-    <main class="card">
-      <img class="logo" src="https://dummyimage.com/200x200/1e88e5/ffffff.png&text=FX+Logo" alt="Logo of Your FX Channel"/>
-      <div class="name">Official FX Channel: <strong>Your FX Channel</strong></div>
 
-      <div class="pill">100% Educational • Policy Safe</div>
-      <h1>Learn Forex the Right Way</h1>
-      <p class="sub">Forex basics for beginners: currency pairs, risk management & trading psychology. No signals, no ROI claims.</p>
+  <!-- Background Animation -->
+  <div class="bg-animation">
+    <div class="grid-overlay"></div>
+    
+    <svg class="chart-wave" viewBox="0 0 400 800" preserveAspectRatio="none">
+      <g class="candlestick" style="animation-delay: 0s;">
+        <rect x="60" y="250" width="10" height="150" fill="#00e611" />
+        <line x1="65" y1="200" x2="65" y2="430" stroke="#00e611" stroke-width="2" />
+      </g>
 
-      <ul aria-label="You will learn">
-        <li>• What are currency pairs & pips (basics only)</li>
-        <li>• Position sizing & risk rules (no return promises)</li>
-        <li>• Common mistakes & discipline</li>
-      </ul>
+      <g class="candlestick" style="animation-delay: 0.5s;">
+        <rect x="180" y="380" width="10" height="200" fill="#00e611" />
+        <line x1="185" y1="320" x2="185" y2="610" stroke="#00e611" stroke-width="2" />
+      </g>
 
-      <a class="cta" href="bridge.html" rel="nofollow noopener">Start Learning</a>
+      <g class="candlestick" style="animation-delay: 1s;">
+        <rect x="300" y="180" width="10" height="280" fill="#00e611" />
+        <line x1="305" y1="120" x2="305" y2="500" stroke="#00e611" stroke-width="2" />
+      </g>
 
-      <div class="warn">⚠️ Risk Warning: Forex involves significant risk and may result in loss of capital. Learn responsibly.</div>
-      <p class="disc"><em>For educational purposes only. We do not provide investment advice or trading signals.</em></p>
-      <footer>© <span id="y"></span> Your FX Channel</footer>
-    </main>
+      <path class="wave-path" d="M 0 550 Q 80 300, 160 500 T 320 250 T 400 150" />
+      
+      <text x="280" y="220" fill="#ffffff" opacity="0.1" font-size="32" font-weight="bold">22.10</text>
+      <text x="70" y="680" fill="#ffffff" opacity="0.1" font-size="32" font-weight="bold">10.75</text>
+    </svg>
   </div>
+
+  <!-- LAYER 1: Experience Question -->
+  <div class="container" id="layer1">
+    <h1 class="main-title">The Trading Mentor ™️</h1>
+    <div class="logo-container">
+      <div class="logo-circle">
+        <!-- Replace src with your image URL -->
+        <img src="https://i.ibb.co/L9vXq0m/wolf-logo.png" alt="Logo" class="logo-img">
+      </div>
+    </div>
+
+    <div class="qa-box">
+      <div class="qa-title">What is your Trading Experience?</div>
+      <label class="qa-option">
+        <input type="radio" name="exp_level" checked> Beginner (New to Trading)
+      </label>
+      <label class="qa-option">
+        <input type="radio" name="exp_level"> Intermediate (1-2 Years Experience)
+      </label>
+      <label class="qa-option">
+        <input type="radio" name="exp_level"> Advanced (Pro / Profitable Trader)
+      </label>
+    </div>
+
+    <button class="cta-button" onclick="goToLayer2()">CONTINUE 🚀</button>
+  </div>
+
+  <!-- LAYER 2: Main Landing Page -->
+  <div class="container" id="layer2">
+    <h1 class="main-title">The Trading Mentor ™️</h1>
+
+    <div class="logo-container">
+      <div class="logo-circle">
+        <!-- Replace src with your image URL -->
+        <img src="Mahira.jpeg" alt="Logo" class="logo-img">
+      </div>
+    </div>
+
+    <div class="timer" id="countdown">5</div>
+
+    <ul class="features-list">
+      <li>✅ SMC, Gold Forex, BTC Setups 🏆</li>
+      <li class="sub-heading">TODAY'S MARKET RESULTS</li>
+      <li>✅ Smart money Strategies $ tips</li>
+      <li style="margin-top: 6px;">🏆</li>
+      <li>✅ 5/5 EXPERT TRADING INSIGHTS TODAY</li>
+      <li class="highlight-text">Risk Management Guidancess 🏆</li>
+    </ul>
+
+    <div class="promo-banner">
+      📢 PAID PROMOTION: <a href="https://t.me/+JP96Y2n0U8xiZWI1" target="_blank">@Digital Ads Experts</a>
+    </div>
+
+    <a href="https://t.me/+n0FlZBQAyZcwNzM1" class="cta-button" target="_blank">
+      JOIN FREE CHANNEL 🚀
+    </a>
+  </div>
+
+  <!-- Footer Info Links -->
+  <div class="footer-links">
+    <a href="javascript:void(0)" onclick="openModal('modal-about')">About Us</a> | 
+    <a href="javascript:void(0)" onclick="openModal('modal-terms')">Terms</a> | 
+    <a href="javascript:void(0)" onclick="openModal('modal-disclaimer')">Disclaimer</a> | 
+    <a href="javascript:void(0)" onclick="openModal('modal-contact')">Contact Us</a>
+  </div>
+
+  <!-- MODALS / POPUPS -->
+  <div class="modal" id="modal-about">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('modal-about')">&times;</span>
+      <h3>About Us</h3>
+      <p>The Trading Mentor ™️ provides expert market insights, Smart Money Concept (SMC) setups, and educational tips for Forex, Gold, and BTC traders worldwide.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-terms">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('modal-terms')">&times;</span>
+      <h3>Terms & Conditions</h3>
+      <p>By using our services, you agree that trading carries risks. All predictions and setups shared are for educational purposes only and not financial advice.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-disclaimer">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('modal-disclaimer')">&times;</span>
+      <h3>Disclaimer</h3>
+      <p>Trading Forex, Crypto, and Stocks involves high risk. Never risk money you cannot afford to lose. Past performance does not guarantee future results.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-contact">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('modal-contact')">&times;</span>
+      <h3>Contact Us</h3>
+      <p>For promos, support, or inquiries, reach out to us via Telegram support or through our official promotion partner link above.</p>
+    </div>
+  </div>
+
   <script>
-    document.getElementById('y').textContent=new Date().getFullYear();
+    function goToLayer2() {
+      document.getElementById('layer1').style.display = 'none';
+      document.getElementById('layer2').style.display = 'flex';
+      startTimer();
+    }
+
+    function startTimer() {
+      let timeLeft = 5;
+      const timerElement = document.getElementById('countdown');
+
+      const interval = setInterval(() => {
+        timeLeft--;
+        if (timeLeft >= 0) {
+          timerElement.textContent = timeLeft;
+        } else {
+          clearInterval(interval);
+        }
+      }, 1000);
+    }
+
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
   </script>
+
 </body>
 </html>
