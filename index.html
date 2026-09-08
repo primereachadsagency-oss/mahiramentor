@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Trading Mentor ™️</title>
 
-  <!-- Meta Pixel Code -->
+<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -15,11 +15,11 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1443271797858266');
+fbq('init', '1725046085216590');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1443271797858266&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1725046085216590&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
   
@@ -111,7 +111,7 @@ src="https://www.facebook.com/tr?id=1443271797858266&ev=PageView&noscript=1"
       100% { opacity: 0.7; transform: scaleY(1.05); }
     }
 
-    /* Layer Containers Styling */
+    /* Layer Container Styling */
     .container {
       position: relative;
       z-index: 2;
@@ -130,53 +130,8 @@ src="https://www.facebook.com/tr?id=1443271797858266&ev=PageView&noscript=1"
       margin-bottom: 15px;
     }
 
-    /* Layer 1 - Q/A Styling */
-    #layer1 {
-      display: flex;
-    }
-
-    #layer2 {
-      display: none; /* Initially Hidden */
-    }
-
-    .qa-box {
-      width: 100%;
-      text-align: left;
-      margin: 20px 0;
-    }
-
-    .qa-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 15px;
-      color: #00ff1a;
-      text-align: center;
-    }
-
-    .qa-option {
-      display: flex;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: background 0.2s, border-color 0.2s;
-    }
-
-    .qa-option:hover {
-      background: rgba(0, 255, 26, 0.15);
-      border-color: #00ff1a;
-    }
-
-    .qa-option input {
-      margin-right: 12px;
-      accent-color: #00ff1a;
-    }
-
     .main-title {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 900;
       letter-spacing: 1px;
       margin-bottom: 16px;
@@ -201,11 +156,10 @@ src="https://www.facebook.com/tr?id=1443271797858266&ev=PageView&noscript=1"
       overflow: hidden;
     }
 
-    /* Logo Image Styling */
     .logo-img {
-      width: 85%;
-      height: 85%;
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .timer {
@@ -378,40 +332,13 @@ src="https://www.facebook.com/tr?id=1443271797858266&ev=PageView&noscript=1"
     </svg>
   </div>
 
-  <!-- LAYER 1: Experience Question -->
-  <div class="container" id="layer1">
-    <h1 class="main-title">The Trading Mentor ™️</h1>
-    <div class="logo-container">
-      <div class="logo-circle">
-        <!-- Replace src with your image URL -->
-        <img src="Mahira.jpeg" alt="Logo" class="logo-img">
-      </div>
-    </div>
-
-    <div class="qa-box">
-      <div class="qa-title">What is your Trading Experience?</div>
-      <label class="qa-option">
-        <input type="radio" name="exp_level" checked> Beginner (New to Trading)
-      </label>
-      <label class="qa-option">
-        <input type="radio" name="exp_level"> Intermediate (1-2 Years Experience)
-      </label>
-      <label class="qa-option">
-        <input type="radio" name="exp_level"> Advanced (Pro / Profitable Trader)
-      </label>
-    </div>
-
-    <button class="cta-button" onclick="goToLayer2()">CONTINUE 🚀</button>
-  </div>
-
-  <!-- LAYER 2: Main Landing Page -->
-  <div class="container" id="layer2">
+  <!-- MAIN LANDING PAGE CONTAINER -->
+  <div class="container">
     <h1 class="main-title">The Trading Mentor ™️</h1>
 
     <div class="logo-container">
       <div class="logo-circle">
-        <!-- Replace src with your image URL -->
-        <img src="Mahira.jpeg" alt="Logo" class="logo-img">
+        <img src="KS Crypto.jpeg" alt="Logo" class="logo-img">
       </div>
     </div>
 
@@ -477,11 +404,10 @@ src="https://www.facebook.com/tr?id=1443271797858266&ev=PageView&noscript=1"
   </div>
 
   <script>
-    function goToLayer2() {
-      document.getElementById('layer1').style.display = 'none';
-      document.getElementById('layer2').style.display = 'flex';
+    // Countdown timer auto-starts on page load
+    window.onload = function() {
       startTimer();
-    }
+    };
 
     function startTimer() {
       let timeLeft = 5;
